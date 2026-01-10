@@ -20,7 +20,7 @@ const CartPage = () => {
     }
 
     const handleCheckout = () => {
-        alert('Checkout functionality will be implemented in the stretch goals!')
+        navigate('/checkout')
     }
 
     if (items.length === 0) {

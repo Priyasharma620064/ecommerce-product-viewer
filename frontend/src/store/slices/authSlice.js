@@ -21,8 +21,9 @@ export const signup = createAsyncThunk(
     async (userData, { rejectWithValue }) => {
         try {
             const response = await api.post('/api/auth/signup', userData)
-            // Don't save token or auto-login, just return success message
-            return { message: 'Account created successfully! Please login to continue.', user: response.data.user }
+            // Save token and auto-login the user
+            localStorage.setItem('token', response.data.token)
+            return response.data
         } catch (error) {
             return rejectWithValue(error.response?.data?.message || 'Signup failed')
         }
@@ -97,9 +98,10 @@ const authSlice = createSlice({
             })
             .addCase(signup.fulfilled, (state, action) => {
                 state.loading = false
-                state.isAuthenticated = false  // Don't auto-login
-                state.signupSuccess = action.payload.message
-                // Don't set user or token
+                state.isAuthenticated = true  // Auto-login after signup
+                state.user = action.payload.user
+                state.token = action.payload.token
+                state.signupSuccess = null
             })
             .addCase(signup.rejected, (state, action) => {
                 state.loading = false

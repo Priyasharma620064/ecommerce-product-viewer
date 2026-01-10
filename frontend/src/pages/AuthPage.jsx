@@ -15,12 +15,12 @@ const AuthPage = () => {
         password: '',
     })
 
-    // Only redirect on login, not after signup
+    // Redirect after successful login or signup
     useEffect(() => {
-        if (isAuthenticated && activeTab === 'login') {
+        if (isAuthenticated) {
             navigate('/products')
         }
-    }, [isAuthenticated, activeTab, navigate])
+    }, [isAuthenticated, navigate])
 
     useEffect(() => {
         dispatch(clearError())

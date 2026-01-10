@@ -96,14 +96,54 @@ const Header = () => {
                                         <p className="text-sm font-semibold text-slate-800">{user?.name}</p>
                                         <p className="text-xs text-slate-500">{user?.email}</p>
                                     </div>
-                                    {user?.role === 'admin' && (
-                                        <Link
-                                            to="/admin"
-                                            className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100"
-                                            onClick={() => setShowUserMenu(false)}
-                                        >
-                                            Admin Dashboard
-                                        </Link>
+                                    {user?.role === 'admin' ? (
+                                        <>
+                                            <Link
+                                                to="/admin"
+                                                className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100"
+                                                onClick={() => setShowUserMenu(false)}
+                                            >
+                                                Admin Dashboard
+                                            </Link>
+                                            <Link
+                                                to="/admin/orders"
+                                                className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100"
+                                                onClick={() => setShowUserMenu(false)}
+                                            >
+                                                Manage Orders
+                                            </Link>
+                                            <Link
+                                                to="/admin/product/new"
+                                                className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100"
+                                                onClick={() => setShowUserMenu(false)}
+                                            >
+                                                Add Product
+                                            </Link>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Link
+                                                to="/profile"
+                                                className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100"
+                                                onClick={() => setShowUserMenu(false)}
+                                            >
+                                                My Profile
+                                            </Link>
+                                            <Link
+                                                to="/orders"
+                                                className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100"
+                                                onClick={() => setShowUserMenu(false)}
+                                            >
+                                                My Orders
+                                            </Link>
+                                            <Link
+                                                to="/wishlist"
+                                                className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100"
+                                                onClick={() => setShowUserMenu(false)}
+                                            >
+                                                My Wishlist
+                                            </Link>
+                                        </>
                                     )}
                                     <button
                                         onClick={handleLogout}

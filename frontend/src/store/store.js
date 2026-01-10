@@ -2,6 +2,8 @@ import { configureStore } from '@reduxjs/toolkit'
 import productReducer from './slices/productSlice'
 import cartReducer from './slices/cartSlice'
 import authReducer from './slices/authSlice'
+import orderReducer from './slices/orderSlice'
+import wishlistReducer from './slices/wishlistSlice'
 import { clearCart } from './slices/cartSlice'
 
 // Middleware to clear cart on login
@@ -21,6 +23,8 @@ const store = configureStore({
         products: productReducer,
         cart: cartReducer,
         auth: authReducer,
+        orders: orderReducer,
+        wishlist: wishlistReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(clearCartOnLogin),

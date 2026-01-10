@@ -7,6 +7,9 @@ import dotenv from 'dotenv'
 import authRoutes from './routes/auth.js'
 import productRoutes from './routes/products.js'
 import uploadRoutes from './routes/upload.js'
+import orderRoutes from './routes/orders.js'
+import paymentRoutes from './routes/payment.js'
+import profileRoutes from './routes/profile.js'
 
 // Load environment variables
 dotenv.config()
@@ -27,6 +30,9 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ecommerce
 app.use('/api/auth', authRoutes)
 app.use('/api/products', productRoutes)
 app.use('/api/upload', uploadRoutes)
+app.use('/api/orders', orderRoutes)
+app.use('/api/payment', paymentRoutes)
+app.use('/api/profile', profileRoutes)
 
 // Health check route
 app.get('/api/health', (req, res) => {
