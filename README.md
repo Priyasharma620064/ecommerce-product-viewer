@@ -4,7 +4,7 @@ A full-stack e-commerce web application built with the MERN stack. This project 
 
 ## 🔗 Live Demo
 
-**[View Live Demo](https://ecommerce-product-viewer-c56nj3azn.vercel.app/)** 
+**[View Live Demo](ecommerce-product-viewer-eta.vercel.app)** 
 
 ## What I Built
 
