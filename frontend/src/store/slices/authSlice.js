@@ -10,6 +10,12 @@ export const login = createAsyncThunk(
             localStorage.setItem('token', response.data.token)
             return response.data
         } catch (error) {
+            // Handle different types of errors
+            if (!error.response) {
+                // Network error or timeout
+                return rejectWithValue(error.message || 'Unable to connect to server. Please check your connection.')
+            }
+            // Server responded with error
             return rejectWithValue(error.response?.data?.message || 'Login failed')
         }
     }
@@ -25,6 +31,12 @@ export const signup = createAsyncThunk(
             localStorage.setItem('token', response.data.token)
             return response.data
         } catch (error) {
+            // Handle different types of errors
+            if (!error.response) {
+                // Network error or timeout
+                return rejectWithValue(error.message || 'Unable to connect to server. Please check your connection.')
+            }
+            // Server responded with error
             return rejectWithValue(error.response?.data?.message || 'Signup failed')
         }
     }
